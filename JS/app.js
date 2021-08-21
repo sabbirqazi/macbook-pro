@@ -2,21 +2,23 @@
 const bestPrice = document.getElementById('best-price');
 /* memory cost calculator start */
 const memoryCost = document.getElementById('memory-cost');
-function getMemoryCost(id, price){
-    document.getElementById(id).addEventListener('click',function(){
+
+function getMemoryCost(id, price) {
+    document.getElementById(id).addEventListener('click', function () {
         memoryCost.innerText = price;
         totalPrice();
         grandTotal.innerText = totalPrice();
     })
 }
-getMemoryCost('memory-8GB','0');
-getMemoryCost('memory-16GB','180');
+getMemoryCost('memory-8GB', '0');
+getMemoryCost('memory-16GB', '180');
 /* memory cost calculator end */
 
 /* storage cost calculation function start */
 const storageCost = document.getElementById('storage-cost');
-function getStorageCost(id, price){
-    document.getElementById(id).addEventListener('click',function(){
+
+function getStorageCost(id, price) {
+    document.getElementById(id).addEventListener('click', function () {
         storageCost.innerText = price;
         totalPrice();
         grandTotal.innerText = totalPrice();
@@ -29,8 +31,9 @@ getStorageCost('storage-1TB', '180');
 
 /* delivery charge calculation function start */
 const deliveryCharge = document.getElementById('delivery-cost');
-function getDeliveryCost(id, price){
-    document.getElementById(id).addEventListener('click',function(){
+
+function getDeliveryCost(id, price) {
+    document.getElementById(id).addEventListener('click', function () {
         deliveryCharge.innerText = price;
         totalPrice();
         grandTotal.innerText = totalPrice();
@@ -42,7 +45,8 @@ getDeliveryCost('charged-delivery', '20');
 
 /* total price calculation function start*/
 const totalCost = document.getElementById('total-cost');
-function totalPrice(){
+
+function totalPrice() {
     const totalPriceAmount = parseInt(bestPrice.innerText) + parseInt(memoryCost.innerText) + parseInt(storageCost.innerText) + parseInt(deliveryCharge.innerText);
     totalCost.innerText = totalPriceAmount;
     return totalPriceAmount;
@@ -52,15 +56,16 @@ function totalPrice(){
 /* total cost after using promo code start */
 const grandTotal = document.getElementById('grand-total');
 const promoInput = document.getElementById('promo-code-input');
-function getPromoCode(){ 
+
+function getPromoCode() {
     const promoValue = promoInput.value;
-    if(promoValue == 'stevekaku'){
+    if (promoValue == 'stevekaku') {
         const promoCostAmount = (parseInt(grandTotal.innerText) * 20) / 100;
         grandTotal.innerText = parseInt(grandTotal.innerText) - promoCostAmount;
         promoInput.value = '';
-    }else{
+    } else {
         alert('You Entered a Wrong Code,Please Enter The Correct Promo Code!!!')
-    } 
+    }
     event.preventDefault();
 }
 /* total cost after using promo code end */
